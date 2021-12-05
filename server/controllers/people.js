@@ -10,7 +10,7 @@ exports.getPeople = (req, res) => {
 }
 
 exports.addPeople = (req, res) => {
-
+    
     const Person = new People({
         name: req.body.name,
         DOB: req.body.DOB
