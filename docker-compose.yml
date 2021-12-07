@@ -16,8 +16,7 @@ services:
     networks:
       - monoCI
     environment:
-      - MONGO_DB_APP=mongodb://mongo:27017/monoAppDB
-      - MONGO_DB_TEST=mongodb://mongo:27017/monoTestDB
+      - MONGO_DB_APP=mongodb://mongo:27017/monoAppDB 
   mongo: 
     image: mongo 
     ports: 

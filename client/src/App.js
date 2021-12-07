@@ -10,8 +10,8 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    
-    axios.get('/api1/getAll')
+    //localhost during production when not running nginx.
+    axios.get('http://localhost:5000/api1/getAll')
     .then(res => {
       
       this.setState({ person: [ ...res.data ]})
@@ -36,7 +36,7 @@ class App extends Component {
       DOB: this.state.DOB
     }
     
-    axios.post('/api1/add', person)
+    axios.post('http://localhost:5000/api1/add', person)
     .then(res => {
       
       this.setState({ person: [ ...this.state.person, res.data ]})
@@ -61,7 +61,7 @@ class App extends Component {
               </p>
           </div>
         ))
-    } else display = 'nothing'
+    } else display = <h4>nothing to display</h4>
     
     return(
       <div>
@@ -69,9 +69,11 @@ class App extends Component {
           {display}
         <form onSubmit={this.onSubmit} >
           <input type='text' 
+            placeholder='Name'
             name='name'
             onChange={this.onChange}/>
           <input type='text' 
+            placeholder='DOB'
             name='DOB'
             onChange={this.onChange}/> 
             <input type="submit"
