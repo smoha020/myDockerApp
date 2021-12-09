@@ -10,7 +10,9 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    //localhost during production when not running nginx.
+    /*use http://localhost:5000 when you are not running nginx
+    regardless of whether you are running it via docker 
+    or installed it onto your virtual machine */
     axios.get('/api1/getAll')
     .then(res => {
       
