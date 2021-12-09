@@ -3,32 +3,33 @@ services:
   client: 
     image: client
     build: ./client/
-    stdin_open: true
     ports:
       - "3000:3000"
     networks:
-      - monoCI
+      - myDockerApp
   api:
     image: api
     build: ./server/
     ports:
         - "5000:5000"
     networks:
-      - monoCI
+      - myDockerApp
     environment:
+      #we use this inside app.js 
       - MONGO_DB_APP=mongodb://mongo:27017/monoAppDB 
   mongo: 
     image: mongo 
     ports: 
       - "27017:27017"
     networks: 
-      - monoCI
+      - myDockerApp
   nginx: 
     build: ./client/
     ports: 
       - "80:80"
     networks: 
-      - monoCI
+      - myDockerApp
 networks: 
-  monoCI:
-      driver: bridge
+  myDockerApp:
+    #
+    driver: bridge
