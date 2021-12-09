@@ -11,7 +11,7 @@ class App extends Component {
 
   componentDidMount = () => {
     //localhost during production when not running nginx.
-    axios.get('http://localhost:5000/api1/getAll')
+    axios.get('/api1/getAll')
     .then(res => {
       
       this.setState({ person: [ ...res.data ]})
@@ -36,7 +36,7 @@ class App extends Component {
       DOB: this.state.DOB
     }
     
-    axios.post('http://localhost:5000/api1/add', person)
+    axios.post('/api1/add', person)
     .then(res => {
       
       this.setState({ person: [ ...this.state.person, res.data ]})
